@@ -1,0 +1,2 @@
+# luncheck
+Check lunch daily.
