@@ -1,9 +1,9 @@
 package com.datapar.domain.usuario.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.datapar.domain.evento.model.Evento;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by George Bonespirito on 24/06/2017.
@@ -17,6 +17,11 @@ public class Usuario {
     private Long id;
     private String userId;
     private String password;
+    @ManyToMany
+    @JoinTable(name = "EVENTO_USUARIO",
+            joinColumns = {@JoinColumn(name = "EVENTO_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "USUARIO_ID")})
+    List<Evento> eventos;
 
     public Usuario() {
     }
@@ -45,6 +50,15 @@ public class Usuario {
 
     public Usuario setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public Usuario setEventos(List<Evento> eventos) {
+        this.eventos = eventos;
         return this;
     }
 

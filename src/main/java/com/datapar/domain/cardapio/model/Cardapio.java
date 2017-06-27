@@ -16,6 +16,8 @@ public class Cardapio {
     String descricao;
     @ManyToMany(mappedBy = "cardapios", cascade = CascadeType.ALL)
     List<Prato> pratos;
+    @OneToMany(mappedBy = "cardapio")
+    List<Cardapio> cardapios;
 
     public Cardapio() {
     }
@@ -32,6 +34,10 @@ public class Cardapio {
         return pratos;
     }
 
+    public List<Cardapio> getCardapios() {
+        return cardapios;
+    }
+
     public Cardapio setId(Long id) {
         Id = id;
         return this;
@@ -44,6 +50,11 @@ public class Cardapio {
 
     public Cardapio setPratos(List<Prato> pratos) {
         this.pratos = pratos;
+        return this;
+    }
+
+    public Cardapio setCardapios(List<Cardapio> cardapios) {
+        this.cardapios = cardapios;
         return this;
     }
 
