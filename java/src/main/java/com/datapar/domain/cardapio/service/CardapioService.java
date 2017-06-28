@@ -7,8 +7,6 @@ import com.datapar.domain.cardapio.repository.PratoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * Created by George Bonespirito on 25/06/2017.
  */
@@ -38,10 +36,6 @@ public class CardapioService {
 
     public void removerPrato(Long id) {
         pratoRepository.delete(id);
-    }
-
-    public List<Prato> getPratos (Cardapio cardapio) {
-        return pratoRepository.findAllByCardapio(cardapio);
     }
 
     public Iterable<Cardapio> getCardapios() {

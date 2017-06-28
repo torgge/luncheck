@@ -18,7 +18,7 @@ public class Evento {
     Long id;
     Date data;
     @ManyToOne
-    @JoinColumn(name = "id_cardapio", referencedColumnName = "id_cardapio")
+    @JoinColumn(name = "cardapio", referencedColumnName = "id")
     Cardapio cardapio;
     @ManyToMany(mappedBy = "eventos")
     List<Usuario> usuarios;

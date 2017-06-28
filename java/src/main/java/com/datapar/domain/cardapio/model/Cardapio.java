@@ -14,10 +14,11 @@ public class Cardapio {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long Id;
     String descricao;
-    @ManyToMany(mappedBy = "cardapios", cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "cardapio_prato"
+            , joinColumns = @JoinColumn(name = "id_cardapio")
+            , inverseJoinColumns = @JoinColumn(name = "id_prato"))
     List<Prato> pratos;
-    @OneToMany(mappedBy = "cardapio")
-    List<Cardapio> cardapios;
 
     public Cardapio() {
     }
@@ -34,10 +35,6 @@ public class Cardapio {
         return pratos;
     }
 
-    public List<Cardapio> getCardapios() {
-        return cardapios;
-    }
-
     public Cardapio setId(Long id) {
         Id = id;
         return this;
@@ -50,11 +47,6 @@ public class Cardapio {
 
     public Cardapio setPratos(List<Prato> pratos) {
         this.pratos = pratos;
-        return this;
-    }
-
-    public Cardapio setCardapios(List<Cardapio> cardapios) {
-        this.cardapios = cardapios;
         return this;
     }
 

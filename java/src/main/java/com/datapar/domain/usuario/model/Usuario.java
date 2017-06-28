@@ -17,10 +17,10 @@ public class Usuario {
     private Long id;
     private String userId;
     private String password;
-    @ManyToMany
-    @JoinTable(name = "EVENTO_USUARIO",
-            joinColumns = {@JoinColumn(name = "EVENTO_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "USUARIO_ID")})
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_evento",
+            joinColumns = {@JoinColumn(name = "id_usuario")},
+            inverseJoinColumns = {@JoinColumn(name = "id_evento")})
     List<Evento> eventos;
 
     public Usuario() {

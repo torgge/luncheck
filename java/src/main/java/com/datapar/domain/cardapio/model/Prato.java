@@ -14,15 +14,17 @@ public class Prato {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String descricao;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "CARDAPIO_PRATO",
-               joinColumns = {@JoinColumn(name = "CARDAPIO_ID")},
-               inverseJoinColumns = {@JoinColumn(name = "PRATO_ID")})
-    List<Cardapio> cardapios;
     @Enumerated(EnumType.STRING)
     TipoDePrato tipoDePrato;
 
+    @ManyToMany(mappedBy="pratos", cascade = CascadeType.ALL)
+    private List<Cardapio> cardapios;
+
     public Prato() {
+    }
+
+    public List<Cardapio> getCardapios() {
+        return cardapios;
     }
 
     public Prato setId(Long id) {
@@ -40,6 +42,11 @@ public class Prato {
         return this;
     }
 
+    public Prato setCardapios(List<Cardapio> cardapios) {
+        this.cardapios = cardapios;
+        return this;
+    }
+
     public Long getId() {
         return id;
     }
@@ -50,15 +57,6 @@ public class Prato {
 
     public TipoDePrato getTipoDePrato() {
         return tipoDePrato;
-    }
-
-    public Prato setCardapios(List<Cardapio> cardapios) {
-        this.cardapios = cardapios;
-        return this;
-    }
-
-    public List<Cardapio> getCardapios() {
-        return cardapios;
     }
 
     @Override
