@@ -16,6 +16,7 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    @Temporal(TemporalType.DATE)
     Date data;
     @ManyToOne
     @JoinColumn(name = "cardapio", referencedColumnName = "id")

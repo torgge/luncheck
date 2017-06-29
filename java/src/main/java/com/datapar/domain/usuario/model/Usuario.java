@@ -1,6 +1,7 @@
 package com.datapar.domain.usuario.model;
 
 import com.datapar.domain.evento.model.Evento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,7 +17,9 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String userId;
+    @JsonIgnore
     private String password;
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_evento",
             joinColumns = {@JoinColumn(name = "id_usuario")},

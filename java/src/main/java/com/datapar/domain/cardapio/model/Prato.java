@@ -1,5 +1,7 @@
 package com.datapar.domain.cardapio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class Prato {
     String descricao;
     @Enumerated(EnumType.STRING)
     TipoDePrato tipoDePrato;
-
+    @JsonIgnore
     @ManyToMany(mappedBy="pratos", cascade = CascadeType.ALL)
     private List<Cardapio> cardapios;
 
