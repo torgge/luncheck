@@ -14,7 +14,7 @@ public class Cardapio {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long Id;
     String descricao;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "cardapio_prato"
             , joinColumns = @JoinColumn(name = "id_cardapio")
             , inverseJoinColumns = @JoinColumn(name = "id_prato"))

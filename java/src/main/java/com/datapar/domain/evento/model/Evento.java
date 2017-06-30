@@ -18,10 +18,10 @@ public class Evento {
     Long id;
     @Temporal(TemporalType.DATE)
     Date data;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cardapio", referencedColumnName = "id")
     Cardapio cardapio;
-    @ManyToMany(mappedBy = "eventos")
+    @ManyToMany(mappedBy = "eventos", cascade = CascadeType.ALL)
     List<Usuario> usuarios;
 
     public Evento() {
