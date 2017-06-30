@@ -32,4 +32,8 @@ public class UsuarioService {
     public Usuario logar(String userId, String password) {
         return repository.findFirstByUserIdAndPassword(userId, password);
     }
+
+    public boolean isUsuarioExists(Usuario usuario) {
+        return repository.findOne(usuario.getId()) != null;
+    }
 }
